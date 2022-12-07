@@ -1,0 +1,307 @@
+install step: https://minikube.sigs.k8s.io/docs/start/
+
+
+## TODO not finish
+
+[thymec@VM-0-11-centos /root]$ uname -a
+Linux VM-0-11-centos 5.4.119-19-0009.11 #1 SMP Wed Oct 5 18:41:07 CST 2022 x86_64 x86_64 x86_64 GNU/Linux
+
+
+[thyme@VM-0-11-centos ~]$ mkdir minikube
+[thyme@VM-0-11-centos ~]$ cd minikube
+[thyme@VM-0-11-centos ~/minikube]$ ls
+[thyme@VM-0-11-centos ~/minikube]$ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 17.1M  100 17.1M    0     0  8401k      0  0:00:02  0:00:02 --:--:-- 8402k
+[thyme@VM-0-11-centos ~/minikube]$ sudo rpm -Uvh minikube-latest.x86_64.rpm
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+[sudo] password for thyme: 
+Sorry, try again.
+[sudo] password for thyme: 
+Sorry, try again.
+[sudo] password for thyme: 
+sudo: 2 incorrect password attempts
+[thyme@VM-0-11-centos ~/minikube]$ su root
+Password: 
+[root@VM-0-11-centos /home/thyme/minikube]# curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 17.1M  100 17.1M    0     0  6130k      0  0:00:02  0:00:02 --:--:-- 6129k
+[root@VM-0-11-centos /home/thyme/minikube]# sudo rpm -Uvh minikube-latest.x86_64.rpm
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:minikube-1.28.0-0                ################################# [100%]
+[root@VM-0-11-centos /home/thyme/minikube]# minikube start
+😄  minikube v1.28.0 on Tencent 2.4 (amd64)
+👎  Unable to pick a default driver. Here is what was considered, in preference order:
+    ▪ docker: Not healthy: "docker version --format {{.Server.Os}}-{{.Server.Version}}" exit status 1: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+    ▪ docker: Suggestion: Start the Docker service <https://minikube.sigs.k8s.io/docs/drivers/docker/>
+💡  Alternatively you could install one of these drivers:
+    ▪ kvm2: Not installed: exec: "virsh": executable file not found in $PATH
+    ▪ podman: Not installed: exec: "podman": executable file not found in $PATH
+    ▪ vmware: Not installed: exec: "docker-machine-driver-vmware": executable file not found in $PATH
+    ▪ virtualbox: Not installed: unable to find VBoxManage in $PATH
+    ▪ qemu2: Not installed: exec: "qemu-system-x86_64": executable file not found in $PATH
+
+❌  Exiting due to DRV_DOCKER_NOT_RUNNING: Found docker, but the docker service isn't running. Try restarting the docker service.
+
+[root@VM-0-11-centos /home/thyme/minikube]# docker
+
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default
+                           "/root/.docker")
+  -c, --context string     Name of the context to use to connect to the
+                           daemon (overrides DOCKER_HOST env var and
+                           default context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket(s) to connect to
+  -l, --log-level string   Set the logging level
+                           ("debug"|"info"|"warn"|"error"|"fatal")
+                           (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default
+                           "/root/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default
+                           "/root/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default
+                           "/root/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  app*        Docker App (Docker Inc., v0.9.1-beta3)
+  builder     Manage builds
+  buildx*     Docker Buildx (Docker Inc., v0.9.1-docker)
+  config      Manage Docker configs
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  scan*       Docker Scan (Docker Inc., v0.21.0)
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker COMMAND --help' for more information on a command.
+
+To get more help with docker, check out our guides at https://docs.docker.com/go/guides/
+[root@VM-0-11-centos /home/thyme/minikube]# restart docker
+bash: restart: command not found
+[root@VM-0-11-centos /home/thyme/minikube]# 
+[root@VM-0-11-centos /home/thyme/minikube]# service docker
+The service command supports only basic LSB actions (start, stop, restart, try-restart, reload, force-reload, status). For other actions, please try to use systemctl.
+[root@VM-0-11-centos /home/thyme/minikube]# service docker restart
+Redirecting to /bin/systemctl restart docker.service
+[root@VM-0-11-centos /home/thyme/minikube]# docker
+
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default
+                           "/root/.docker")
+  -c, --context string     Name of the context to use to connect to the
+                           daemon (overrides DOCKER_HOST env var and
+                           default context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket(s) to connect to
+  -l, --log-level string   Set the logging level
+                           ("debug"|"info"|"warn"|"error"|"fatal")
+                           (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default
+                           "/root/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default
+                           "/root/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default
+                           "/root/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  app*        Docker App (Docker Inc., v0.9.1-beta3)
+  builder     Manage builds
+  buildx*     Docker Buildx (Docker Inc., v0.9.1-docker)
+  config      Manage Docker configs
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  scan*       Docker Scan (Docker Inc., v0.21.0)
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker COMMAND --help' for more information on a command.
+
+To get more help with docker, check out our guides at https://docs.docker.com/go/guides/
+[root@VM-0-11-centos /home/thyme/minikube]# docker run busybox echo "hello world"
+Unable to find image 'busybox:latest' locally
+latest: Pulling from library/busybox
+45a0cdc5c8d3: Pull complete 
+Digest: sha256:3b3128d9df6bbbcc92e2358e596c9fbd722a437a62bafbc51607970e9e3b8869
+Status: Downloaded newer image for busybox:latest
+hello world
+[root@VM-0-11-centos /home/thyme/minikube]# sudo rpm -Uvh minikube-latest.x86_64.rpm
+Preparing...                          ################################# [100%]
+	package minikube-1.28.0-0.x86_64 is already installed
+[root@VM-0-11-centos /home/thyme/minikube]# minikube start
+😄  minikube v1.28.0 on Tencent 2.4 (amd64)
+✨  Automatically selected the docker driver. Other choices: none, ssh
+🛑  The "docker" driver should not be used with root privileges. If you wish to continue as root, use --force.
+💡  If you are running minikube within a VM, consider using --driver=none:
+📘    https://minikube.sigs.k8s.io/docs/reference/drivers/none/
+
+❌  Exiting due to DRV_AS_ROOT: The "docker" driver should not be used with root privileges.
+
+[root@VM-0-11-centos /home/thyme/minikube]# user add thyme passwd cj1232123
+bash: user: command not found
+[root@VM-0-11-centos /home/thyme/minikube]# useradd thyme passwd cj1232123
+Usage: useradd [options] LOGIN
+       useradd -D
+       useradd -D [options]
+
+Options:
+  -b, --base-dir BASE_DIR       base directory for the home directory of the
+                                new account
+  -c, --comment COMMENT         GECOS field of the new account
+  -d, --home-dir HOME_DIR       home directory of the new account
+  -D, --defaults                print or change default useradd configuration
+  -e, --expiredate EXPIRE_DATE  expiration date of the new account
+  -f, --inactive INACTIVE       password inactivity period of the new account
+  -g, --gid GROUP               name or ID of the primary group of the new
+                                account
+  -G, --groups GROUPS           list of supplementary groups of the new
+                                account
+  -h, --help                    display this help message and exit
+  -k, --skel SKEL_DIR           use this alternative skeleton directory
+  -K, --key KEY=VALUE           override /etc/login.defs defaults
+  -l, --no-log-init             do not add the user to the lastlog and
+                                faillog databases
+  -m, --create-home             create the user's home directory
+  -M, --no-create-home          do not create the user's home directory
+  -N, --no-user-group           do not create a group with the same name as
+                                the user
+  -o, --non-unique              allow to create users with duplicate
+                                (non-unique) UID
+  -p, --password PASSWORD       encrypted password of the new account
+  -r, --system                  create a system account
+  -R, --root CHROOT_DIR         directory to chroot into
+  -P, --prefix PREFIX_DIR       prefix directory where are located the /etc/* files
+  -s, --shell SHELL             login shell of the new account
+  -u, --uid UID                 user ID of the new account
+  -U, --user-group              create a group with the same name as the user
+  -Z, --selinux-user SEUSER     use a specific SEUSER for the SELinux user mapping
+
+[root@VM-0-11-centos /home/thyme/minikube]# 
